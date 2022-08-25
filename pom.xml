@@ -69,6 +69,31 @@
 			<version>18.3.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.4.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7.js6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jo.edu.htu</groupId>
+			<artifactId>arial</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 </project>

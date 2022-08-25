@@ -66,14 +66,16 @@ public class MBStudentResult {
 		
 		result.setTrainingCourses(new TrainingCourses());
 		
+		table = dao.selectALL();
+		
 		return null;
 	}
 	
 	public String deleteSResult() {
 		dao = new StudentResultDAO();
 		dao.delete(result.getStudent().getStudentid());
-		
-		result = new StudentResult();
+		table = dao.selectALL();
+
 		return null;
 	}
 	

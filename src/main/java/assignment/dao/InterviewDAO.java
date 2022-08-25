@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class InterviewDAO {
 				
 				table.add(interview);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -77,7 +76,7 @@ public class InterviewDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -107,7 +106,7 @@ public class InterviewDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);

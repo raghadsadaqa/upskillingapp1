@@ -3,7 +3,6 @@ package assignment.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class UniDAO {
 				UniTable.add(university);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			Database.close(rs);
@@ -60,7 +59,7 @@ public class UniDAO {
 				university = new University(rs.getInt("university_id"), rs.getString("university_aname"),
 						rs.getString("university_ename"), rs.getString("website"));
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			Database.close(rs);
@@ -87,7 +86,7 @@ public class UniDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			Database.close(ps);
@@ -113,7 +112,7 @@ public class UniDAO {
 
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			Database.close(ps);
@@ -134,7 +133,7 @@ public class UniDAO {
 
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			Database.close(ps);

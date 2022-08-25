@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +49,7 @@ public class StudentDAO {
 				
 				studentTable.add(student);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -87,7 +86,7 @@ public class StudentDAO {
 				Program program = programDAO.selectById(rs.getInt("program_id"));
 				student.setProgram(program);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -109,7 +108,7 @@ public class StudentDAO {
 			    return rs.getInt("student_id");
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			System.out.println("Finally");
@@ -157,7 +156,7 @@ public class StudentDAO {
 			
 			row = ps.executeUpdate();
 				
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -195,7 +194,7 @@ public class StudentDAO {
 			
 			row = ps.executeUpdate();
 				
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -214,7 +213,7 @@ public class StudentDAO {
 			
 			row = ps.executeUpdate();
 				
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);

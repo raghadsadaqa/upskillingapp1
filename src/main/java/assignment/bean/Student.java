@@ -27,6 +27,10 @@ public class Student {
 	public Student() {
 
 	}
+	
+	public Student(String email) {
+		this.email = email;
+	}
 
 
 	public Student(int studentid, String aname, String ename, String mobile, Date birthDate, String sex, String email,

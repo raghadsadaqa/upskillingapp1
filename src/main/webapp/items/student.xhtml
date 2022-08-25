@@ -126,7 +126,15 @@
 								<f:setPropertyActionListener value="#{q}" target="#{mbStudents.student}" />
 							</p:commandButton>
 						</p:column>
+						
+						<p:column headerText="#{msg.btn_report}">
+							<p:commandButton value="#{msg.btn_report}" action="#{mbStudents.runStudentReport()}" ajax="false">
+								<f:setPropertyActionListener value="#{q}" target="#{mbStudents.student}" />
+							</p:commandButton>
+						</p:column>
+												
 					</p:dataTable>
+			
 				</p:tab>
 
 			</p:tabView>

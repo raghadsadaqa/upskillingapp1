@@ -62,7 +62,7 @@
 			<p:panelGrid id="editpnl" columns="2">
 
 				<p:outputLabel value="#{msg.menu_student} - #{msg.lbl_id}" />
-				<h:inputText value="#{mbSResult.result.student.studentid}" />
+				<h:outputText value="#{mbSResult.result.student.studentid}" />
 
 				<p:outputLabel value="#{msg.menu_training_course} - #{msg.lbl_id}" />
 				<h:inputText value="#{mbSResult.result.trainingCourses.courseid}" />

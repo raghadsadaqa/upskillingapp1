@@ -25,7 +25,7 @@
 					<p:selectOneMenu id="Sid" value="#{mbProgram.program.schoolid}" required="true"
 						requiredMessage="#{msg.msg_required} -#{msg.menu_school} - #{msg.lbl_id}">
 						<f:selectItem itemLabel="#{msg.menu_select}" itemValue=""/>
-						<f:selectItems value="#{mbSchool.table}" var="p" itemLabel="#{p.ename}" itemValue="#{p.id}"/>
+						<f:selectItems value="#{mbProgram.schoolTable}" var="p" itemLabel="#{p.ename}" itemValue="#{p.id}"/>
 					</p:selectOneMenu>
 
 					<p:outputLabel value="#{msg.lbl_aname}" for="aname" />

@@ -3,7 +3,6 @@ package assignment.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class StudentResultDAO {
 	               resultsTable.add(studentresult);
 	            }
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -90,7 +89,7 @@ public class StudentResultDAO {
 				
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -120,7 +119,7 @@ public class StudentResultDAO {
 	            ps.setString(counter++, studentresult.getAcceptedFlag());
 	            ps.setString(counter++, studentresult.getNotes());
 	            row = ps.executeUpdate();
-	        } catch (SQLException e) {
+	        } catch (Exception e) {
 	            e.printStackTrace();
 	        } finally {
 	            Database.close(ps);
@@ -145,7 +144,7 @@ public class StudentResultDAO {
 
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -165,7 +164,7 @@ public class StudentResultDAO {
 
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);

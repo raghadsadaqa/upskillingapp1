@@ -3,15 +3,18 @@ package assignment.bean;
 public class Program {
 
 	private int schoolid;
+	private School school;
 	private int programid;
 	private String aname;
 	private String ename;
 	
-	private School school;
+	
 	
 	public Program() {
 
 	}
+	
+	
 	
 	public Program(int schoolid, int programid, String aname, String ename) {
 		this.schoolid = schoolid;
@@ -22,19 +25,27 @@ public class Program {
 
 
 
-	public Program(int schoolid, int programid) {
-		this.schoolid = schoolid;
+	public Program(int programid, String aname, String ename) {
 		this.programid = programid;
+		this.aname = aname;
+		this.ename = ename;
 	}
 
 
 
+	
 	public int getSchoolid() {
 		return schoolid;
 	}
+
+
+
 	public void setSchoolid(int schoolid) {
 		this.schoolid = schoolid;
 	}
+
+
+
 	public int getProgramid() {
 		return programid;
 	}
@@ -64,9 +75,13 @@ public class Program {
 
 	@Override
 	public String toString() {
-		return "Program [schoolid=" + schoolid + ", programid=" + programid + ", aname=" + aname + ", ename=" + ename
-				+ "] \n";
+		return "Program [school=" + school + ", programid=" + programid + ", aname=" + aname + ", ename=" + ename + "]";
 	}
+
+	
+	
+
+	
 	
 	
 	

@@ -1,13 +1,18 @@
 package assignment.mb;
 
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.imageio.ImageIO;
 
 import assignment.bean.University;
 import assignment.dao.UniDAO;
+import reports.Reports;
 import util.Message;
 
 @ManagedBean(name = "mbUniversity")
@@ -44,6 +49,20 @@ public class MBUniversity {
 	public String deleteUni() {
 		dao.delete(university.getId());
 		Table = dao.selectALL();
+		return null;
+	}
+	
+	
+	public String runUniReport() throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/image/HTULogo-250px.png"));
+		param.put("p_image", image);
+
+		Reports report = new Reports();
+		report.runPdf("university.jasper", param);
+
 		return null;
 	}
 	

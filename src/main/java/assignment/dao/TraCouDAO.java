@@ -3,7 +3,6 @@ package assignment.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class TraCouDAO {
 				TRTable.add(courses);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -62,7 +61,7 @@ public class TraCouDAO {
 				courses = new TrainingCourses(rs.getInt("course_id"), rs.getString("course_aname"), rs.getString("course_ename"), rs.getInt("max_students"), rs.getString("short_descr"), rs.getString("detailed_desc"));
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -92,7 +91,7 @@ public class TraCouDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);
@@ -119,7 +118,7 @@ public class TraCouDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);
@@ -139,7 +138,7 @@ public class TraCouDAO {
 
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);

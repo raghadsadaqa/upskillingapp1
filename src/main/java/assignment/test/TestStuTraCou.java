@@ -2,14 +2,12 @@ package assignment.test;
 
 import java.util.List;
 
-import assignment.bean.StudentTrainingCourse;
-import assignment.dao.StudentTraCouDAO;
 
 public class TestStuTraCou {
 
 	public static void main(String[] args) {
 		
-		StudentTraCouDAO dao = new StudentTraCouDAO();
+		//StudentTraCouDAO dao = new StudentTraCouDAO();
 		
 		/*StudentTrainingCourse course = new StudentTrainingCourse(1, 1); 
 		int row = dao.delete(course);
@@ -24,8 +22,7 @@ public class TestStuTraCou {
 		System.out.println(row + "updated");*/
 
 		
-		List<StudentTrainingCourse> coursesTable = dao.selectALL();
-		System.out.println(coursesTable);
+		//List<StudentTrainingCourse> coursesTable = dao.selectALL();
 		
 	}
 

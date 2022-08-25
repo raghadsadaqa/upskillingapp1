@@ -3,7 +3,6 @@ package assignment.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class SchoolDAO {
 				School school = new School(rs.getInt("school_id"), rs.getString("school_aname"), rs.getString("school_ename"));
 				SchoolTable.add(school);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -57,7 +56,7 @@ public class SchoolDAO {
 			if (rs.next()) {
 				school = new School(rs.getInt("school_id"), rs.getString("school_aname"), rs.getString("school_ename"));
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -85,7 +84,7 @@ public class SchoolDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -109,7 +108,7 @@ public class SchoolDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);
@@ -129,7 +128,7 @@ public class SchoolDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(ps);

@@ -1,18 +1,23 @@
 package assignment.mb;
 
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
 
 import assignment.bean.School;
 import assignment.dao.SchoolDAO;
+import reports.Reports;
 import util.Message;
 
 @ManagedBean(name = "mbSchool")
@@ -62,6 +67,19 @@ public class MBSchool {
 	public String deleteSchool() {
 		dao.delete(school.getId());
 		table = dao.selectALL();
+		return null;
+	}
+	
+	public String runSchoolReport() throws Exception {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/image/HTULogo-250px.png"));
+		param.put("p_image", image);
+
+		Reports report = new Reports();
+		report.runPdf("school.jasper", param);
+
 		return null;
 	}
 	

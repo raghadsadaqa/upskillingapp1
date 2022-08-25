@@ -58,6 +58,9 @@
 						<h:outputText value="#{msg.lbl_total} - #{msg.menu_training_course} : #{mbCourse.table.size()} " />
 					</f:facet>
 				</p:dataTable>
+				
+				<p:commandButton value="#{msg.btn_report}" action="#{mbCourse.runCourseReport()}" ajax="false" />
+				
 			</p:panel>
 
 			<p:dialog header="Edit School" widgetVar="coursedlg">

@@ -44,6 +44,9 @@
 					<h:outputText value="#{msg.lbl_total} - #{msg.menu_university} : #{mbUniversity.table.size()} " />
 				</f:facet>
 			</p:dataTable>
+			
+			<p:commandButton value="#{msg.btn_report}" action="#{mbUniversity.runUniReport()}" ajax="false" />
+			
 		</p:panel>
 
 		<p:dialog header="Edit University" widgetVar="Unidlg">

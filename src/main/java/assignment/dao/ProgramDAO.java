@@ -3,7 +3,6 @@ package assignment.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class ProgramDAO {
 				proTable.add(program);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -71,7 +70,7 @@ public class ProgramDAO {
 				program.setSchool(school);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(rs);
@@ -100,7 +99,7 @@ public class ProgramDAO {
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);
@@ -120,12 +119,12 @@ public class ProgramDAO {
 			
 			ps.setString(counter++, program.getAname());
 			ps.setString(counter++, program.getEname());
-			ps.setInt(counter++, program.getSchoolid());
+			ps.setInt(counter++, program.getSchool().getId());
 			ps.setInt(counter++, program.getProgramid());
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);
@@ -135,19 +134,18 @@ public class ProgramDAO {
 		return row;
 		
 	}
-	public int delete(int id1, int id2) {
+	public int delete(int id1) {
 		try {
 			db = new Database();
 			connection = db.getConnection();
-			ps = connection.prepareStatement("delete from program where school_id = ? and program_id = ?");
+			ps = connection.prepareStatement("delete from program where program_id = ?");
 					
 		
 			ps.setInt(1, id1);
-			ps.setInt(2, id2);
 			
 			row = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			Database.close(connection);
