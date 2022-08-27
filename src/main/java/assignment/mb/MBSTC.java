@@ -35,8 +35,8 @@ public class MBSTC {
 		
 		dao = new STCDAO();
 		table = dao.selectAll();
-		studentTrainingCourse = new StudentTC();
 		
+		studentTrainingCourse = new StudentTC();
 		studentTrainingCourse.setStudent(new Student());
 		studentTrainingCourse.setTrainingCourses(new TrainingCourses());
 	}
@@ -71,12 +71,24 @@ public class MBSTC {
 	
 	public String DeleteSTC() {
 		dao = new STCDAO();
-		dao.delete(studentTrainingCourse.getStudent().getStudentid());
-		studentTrainingCourse = new StudentTC();
+		dao.delete(studentTrainingCourse.getStudent().getStudentid(), studentTrainingCourse.getTrainingCourses().getCourseid());
+		
+		dao = new STCDAO();
+		table = dao.selectAll();
+		
+		/*studentTrainingCourse = new StudentTC();
+		studentTrainingCourse.setStudent(new Student());
+		studentTrainingCourse.setTrainingCourses(new TrainingCourses());*/
+		
 		return null;
 	}
 
 	public StudentTC getStudentTrainingCourse() {
+		if (studentTrainingCourse == null){
+			studentTrainingCourse = new StudentTC();
+			studentTrainingCourse.setStudent(new Student());
+			studentTrainingCourse.setTrainingCourses(new TrainingCourses());
+		}
 		return studentTrainingCourse;
 	}
 

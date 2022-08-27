@@ -14,11 +14,11 @@ import util.Message;
 @ManagedBean(name = "mbLog")
 @SessionScoped
 public class MBLogin {
-	
+
 	private String username;
 	private String password;
 	private boolean logon;
-	
+
 	private String lang = "en";
 	private Locale locale = Locale.ENGLISH;
 	private String dir = "ltr";
@@ -41,9 +41,10 @@ public class MBLogin {
 			}
 		}
 	}
-	
+
 	public String checkUser() {
-		if (username.equalsIgnoreCase("htu") && password.equals("htu@1")) {
+		if ((username.equalsIgnoreCase("htu") && password.equals("htu@1"))
+				|| (username.equalsIgnoreCase("java") && password.equals("Java@2022"))) {
 			logon = true;
 			return "/screen.xhtml";
 		} else {
@@ -52,27 +53,32 @@ public class MBLogin {
 			return null;
 		}
 	}
-	
+
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/screen.xhtml?faces-redirect=true";
+		return "/screen.xhtml?faces-redirect=true";
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public boolean isLogon() {
 		return logon;
 	}
+
 	public void setLogon(boolean logon) {
 		this.logon = logon;
 	}
@@ -89,16 +95,12 @@ public class MBLogin {
 		return locale;
 	}
 
-
 	public String getDir() {
 		return dir;
 	}
 
-
-	public  Map<String, Object> getCountries() {
+	public Map<String, Object> getCountries() {
 		return countries;
 	}
-	
-	
 
 }

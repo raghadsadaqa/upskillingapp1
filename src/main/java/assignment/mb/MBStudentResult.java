@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import assignment.bean.Student;
 import assignment.bean.StudentResult;
@@ -13,6 +14,7 @@ import assignment.dao.StudentResultDAO;
 import assignment.dao.TraCouDAO;
 import util.Message;
 
+@ViewScoped
 @ManagedBean(name = "mbSResult")
 public class MBStudentResult {
 	
@@ -33,6 +35,9 @@ public class MBStudentResult {
 		
 		dao = new StudentResultDAO();
 		table = dao.selectALL();
+		
+		System.out.println("table: " + table);
+		
 		result = new StudentResult();
 	
 		result.setStudent(new Student());
@@ -62,8 +67,8 @@ public class MBStudentResult {
 	public String updateSResult() {
 		dao = new StudentResultDAO();
 		dao.update(result);
-		result = new StudentResult();
 		
+		result = new StudentResult();
 		result.setTrainingCourses(new TrainingCourses());
 		
 		table = dao.selectALL();

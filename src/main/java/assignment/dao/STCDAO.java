@@ -136,15 +136,16 @@ public class STCDAO {
 		return row;
 	}
 	
-	public int delete(int id1) {
+	public int delete(int id1, int cid) {
 		try {
 			db = new Database();
 			connection = db.getConnection();
-			ps = connection.prepareStatement("delete from student_training_course where student_id = ?");
+			ps = connection.prepareStatement("delete from student_training_course where student_id = ? and course_id = ?");
 			
 			int counter = 1;
 			
 			ps.setInt(counter++, id1);
+			ps.setInt(counter++, cid);
 			
 			row = ps.executeUpdate();
 			

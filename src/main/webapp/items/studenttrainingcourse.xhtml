@@ -6,45 +6,46 @@
 
 	<ui:define name="content">
 		<p:spacer height="50" />
-		<h:form id="STCForm">
-		
-			<p:tabView>
+		<p:tabView id="tabview">
+
 			<p:tab title="#{msg.menu_add_stc}">
-			
-				<p:growl showDetail="true">
-					<p:autoUpdate />
-				</p:growl>
+				<h:form id="STCForm">
 
-				<p:panelGrid columns="7">
-					<f:facet name="header">
-						<h:outputText value="#{msg.menu_add_stc}" />
-					</f:facet>
+					<p:growl showDetail="true">
+						<p:autoUpdate />
+					</p:growl>
 
-					<p:outputLabel value="#{msg.menu_student} - #{msg.lbl_id}" for="stuid" />
-					<p:inputText id="stuid" value="#{mbStudentTrainingCourse.studentTrainingCourse.student.studentid}" required="true"
-						requiredMessage="#{msg.msg_required} - #{msg.menu_student} - #{msg.lbl_id}"
-						validatorMessage="#{msg.msg_validation} - #{msg.menu_student} - #{msg.lbl_id}" />
+					<p:panelGrid columns="7">
+						<f:facet name="header">
+							<h:outputText value="#{msg.menu_add_stc}" />
+						</f:facet>
 
-					<p:outputLabel value="#{msg.menu_training_course} - #{msg.lbl_id}" for="couid" />
-					<p:selectOneMenu id="couid" value="#{mbStudentTrainingCourse.studentTrainingCourse.trainingCourses.courseid}" required="true"
-						requiredMessage="#{msg.msg_required} - #{msg.menu_training_course} - #{msg.lbl_id}"
-						validatorMessage="#{msg.msg_validation} - #{msg.menu_training_course} - #{msg.lbl_id}">
-						<f:selectItem itemLabel="#{msg.menu_select}" itemValue="" />
-						<f:selectItems value="#{mbStudentTrainingCourse.trainingCourseTable}" var="co" itemLabel="#{co.ename}" itemValue="#{co.courseid}" />
-					</p:selectOneMenu>
+						<p:outputLabel value="#{msg.menu_student} - #{msg.lbl_id}" for="stuid" />
+						<p:inputText id="stuid" value="#{mbStudentTrainingCourse.studentTrainingCourse.student.studentid}" required="true"
+							requiredMessage="#{msg.msg_required} - #{msg.menu_student} - #{msg.lbl_id}"
+							validatorMessage="#{msg.msg_validation} - #{msg.menu_student} - #{msg.lbl_id}" />
 
-					<p:outputLabel value="#{msg.lbl_priority}" for="p" />
-					<p:inputText id="p" value="#{mbStudentTrainingCourse.studentTrainingCourse.priority}" required="true"
-						requiredMessage="#{msg.msg_required} - #{msg.lbl_priority}" validatorMessage="#{msg.msg_validation} - #{msg.lbl_priority}" />
+						<p:outputLabel value="#{msg.menu_training_course} - #{msg.lbl_id}" for="couid" />
+						<p:selectOneMenu id="couid" value="#{mbStudentTrainingCourse.studentTrainingCourse.trainingCourses.courseid}" required="true"
+							requiredMessage="#{msg.msg_required} - #{msg.menu_training_course} - #{msg.lbl_id}"
+							validatorMessage="#{msg.msg_validation} - #{msg.menu_training_course} - #{msg.lbl_id}">
+							<f:selectItem itemLabel="#{msg.menu_select}" itemValue="" />
+							<f:selectItems value="#{mbStudentTrainingCourse.trainingCourseTable}" var="co" itemLabel="#{co.ename}" itemValue="#{co.courseid}" />
+						</p:selectOneMenu>
 
-					<p:commandButton value="#{msg.btn_save}" action="#{mbStudentTrainingCourse.Save()}" ajax="false" />
+						<p:outputLabel value="#{msg.lbl_priority}" for="p" />
+						<p:inputText id="p" value="#{mbStudentTrainingCourse.studentTrainingCourse.priority}" required="true"
+							requiredMessage="#{msg.msg_required} - #{msg.lbl_priority}" validatorMessage="#{msg.msg_validation} - #{msg.lbl_priority}" />
 
-				</p:panelGrid>
+						<p:commandButton value="#{msg.btn_save}" action="#{mbStudentTrainingCourse.Save()}" ajax="false" />
 
-				</p:tab>
+					</p:panelGrid>
+				</h:form>
+			</p:tab>
 
-				<p:tab title="#{msg.menu_stc}">
-					<p:dataTable value="#{mbStudentTrainingCourse.table}" var="stc">
+			<p:tab id="tab2" title="#{msg.menu_stc}">
+				<h:form id="STCForm1">
+					<p:dataTable id="tbl" value="#{mbStudentTrainingCourse.table}" var="stc">
 						<f:facet name="header">
 							<h:outputText value="#{msg.menu_stc}" styleClass="java.css" />
 						</f:facet>
@@ -68,13 +69,13 @@
 						</p:column>
 
 						<p:column headerText="#{msg.btn_edit}">
-							<p:commandButton value="#{msg.btn_edit}" type="button" update=":STCForm:editpnl" onclick="PF('stcdlg').show()">
+							<p:commandButton value="#{msg.btn_edit}" type="button" update=":STCForm2:editpnl" onclick="PF('stcdlg').show()">
 								<f:setPropertyActionListener value="#{stc}" target="#{mbStudentTrainingCourse.studentTrainingCourse}" />
 							</p:commandButton>
 						</p:column>
 
 						<p:column headerText="#{msg.btn_remove}">
-							<p:commandButton value="#{msg.btn_remove}" action="#{mbStudentTrainingCourse.DeleteSTC()}" ajax="false">
+							<p:commandButton value="#{msg.btn_remove}" action="#{mbStudentTrainingCourse.DeleteSTC()}" process="@this" update=":tabview:STCForm1:tbl">
 								<f:setPropertyActionListener value="#{stc}" target="#{mbStudentTrainingCourse.studentTrainingCourse}" />
 							</p:commandButton>
 						</p:column>
@@ -84,11 +85,13 @@
 						</f:facet>
 
 					</p:dataTable>
-				</p:tab>
-				
-			</p:tabView>
-			
-			<p:dialog header="#{msg.btn_edit} - #{msg.menu_stc}" widgetVar="stcdlg">
+				</h:form>
+			</p:tab>
+
+		</p:tabView>
+
+		<p:dialog header="#{msg.btn_edit} - #{msg.menu_stc}" widgetVar="stcdlg">
+			<h:form id="STCForm2">
 				<p:panelGrid id="editpnl" columns="2">
 
 					<p:outputLabel value="#{msg.menu_student}" />
@@ -105,8 +108,8 @@
 						<p:commandButton value="#{msg.btn_back}" type="button" onclick="PF('stcdlg').hide()" />
 					</f:facet>
 				</p:panelGrid>
-			</p:dialog>
+			</h:form>
+		</p:dialog>
 
-		</h:form>
 	</ui:define>
 </ui:composition>
